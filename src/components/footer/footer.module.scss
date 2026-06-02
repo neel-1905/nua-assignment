@@ -1,0 +1,68 @@
+@use "../../styles/variables" as *;
+
+.footer {
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+
+  .footerContent {
+    max-width: $container-width;
+    margin: 0 auto;
+    // padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+
+    .footerColumn {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .footerTitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: $primary;
+      }
+
+      h3 {
+        margin: 0;
+        padding: 0;
+        font-size: 1.1 rem;
+        font-weight: 600;
+        color: $primary;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: $primary-muted;
+        font-weight: 500;
+      }
+
+      a {
+        text-decoration: none;
+        color: $primary-muted;
+        font-weight: 500;
+        transition: color 0.2s ease;
+        font-size: 0.9rem;
+
+        &:hover {
+          color: $secondary;
+        }
+      }
+
+      .socialLinks {
+        display: flex;
+        gap: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .footer {
+    .footerContent {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -6,18 +6,36 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+}
+
 body {
   background-color: $bg;
   color: $primary;
   font-family: $font-family;
-  height: 100vh;
+  // height: 100vh;
   overflow-x: hidden;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .content-wrapper {
   max-width: $container-width;
+  width: 100%;
   margin: 0 auto;
   padding: 30px 15px;
-  //   border-left: 1px solid $primary;
-  //   border-right: 1px solid $primary;
+  flex: 1;
+  border-left: 1px solid $primary;
+  border-right: 1px solid $primary;
 }
