@@ -20,6 +20,7 @@ body {
   background-color: $bg;
   color: $primary;
   font-family: $font-family;
+  letter-spacing: 0.5px;
   // height: 100vh;
   overflow-x: hidden;
 }
@@ -38,4 +39,20 @@ body {
   flex: 1;
   border-left: 1px solid $primary;
   border-right: 1px solid $primary;
+}
+
+.primary-button {
+  background: $primary;
+  color: $bg;
+  border: none;
+  padding: 15px 20px;
+  border-radius: $radius;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: $primary-muted;
+  }
 }

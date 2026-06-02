@@ -2,9 +2,10 @@ import ImageGallery from "../image-gallery/image-gallery";
 import { useProduct } from "../../hooks/useProduct";
 import { LoaderCircle } from "lucide-react";
 import styles from "./product-detail-page.module.scss";
+import ProductInfo from "../product-info/product-info";
 
 const ProductDetailPage = () => {
-  const { product, loading, error } = useProduct("3");
+  const { product, loading, error } = useProduct("1");
 
   return (
     <div className="content-wrapper">
@@ -22,10 +23,10 @@ const ProductDetailPage = () => {
 
       {!loading && !error && product && (
         <>
-          <div className={styles.productDetailHeroWrapper}>
+          <section className={styles.productDetailHeroWrapper}>
             <ImageGallery product={product} />
-            <div className={styles.productDetailInfoWrapper}>Info</div>
-          </div>
+            <ProductInfo product={product} />
+          </section>
         </>
       )}
     </div>
