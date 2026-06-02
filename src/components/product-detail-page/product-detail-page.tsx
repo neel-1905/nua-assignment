@@ -4,7 +4,7 @@ import { LoaderCircle } from "lucide-react";
 import styles from "./product-detail-page.module.scss";
 
 const ProductDetailPage = () => {
-  const { product, loading, error } = useProduct("2");
+  const { product, loading, error } = useProduct("3");
 
   return (
     <div className="content-wrapper">

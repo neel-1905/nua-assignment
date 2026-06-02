@@ -2,18 +2,14 @@
 @use "../../styles/mixins.scss" as *;
 
 .imageGalleryWrapper {
-  //   display: flex;
   display: block;
 }
 
 .imageWrapper {
-  max-width: 550px;
-  height: 500px;
   aspect-ratio: 1/1;
-  margin: 0 auto;
-  // border: 1px solid $primary;
   border-radius: $radius;
-  padding: 10px;
+  overflow: hidden;
+  width: 100%;
 }
 
 .image {
@@ -30,8 +26,6 @@
 .thumbnailContainer {
   display: flex;
   gap: 10px;
-  width: 500px;
-  margin: 0 auto;
   padding: 10px;
   flex-wrap: wrap;
 
@@ -39,9 +33,9 @@
     cursor: pointer;
     height: 90px;
     width: 90px;
-    // border: 1px solid $primary;
     border-radius: $radius;
-    @include flex-center; // padding: 5px;
+    border: 1px solid $border;
+    @include flex-center;
 
     &[data-active="true"] {
       border: 2px solid $secondary;
@@ -61,22 +55,12 @@
     display: none;
   }
 
-  .imageWrapper {
-    width: 100%;
-    height: 100%;
-  }
-
   .thumbnailContainer {
     width: 100%;
   }
 }
 
 @media (max-width: $breakpoint-tablet) {
-  .imageWrapper {
-    width: 500px;
-    height: 500px;
-  }
-
   .thumbnailContainer {
     width: 500px;
   }
