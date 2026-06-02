@@ -1,13 +1,23 @@
 @use "./variables" as *;
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: $bg;
-    color: $primary;
-    font-family: $font-family;
+body {
+  background-color: $bg;
+  color: $primary;
+  font-family: $font-family;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.content-wrapper {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 30px 15px;
+  //   border-left: 1px solid $primary;
+  //   border-right: 1px solid $primary;
 }

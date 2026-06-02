@@ -1,0 +1,44 @@
+@use "../../styles/variables" as *;
+
+.header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    color: $primary;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    display: block;
+  }
+
+  .navRight {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .navbar {
+    padding: 10px;
+
+    .logo {
+      font-size: 1.5rem;
+    }
+  }
+}
