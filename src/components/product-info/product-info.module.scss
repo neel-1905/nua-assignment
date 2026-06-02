@@ -152,5 +152,32 @@
     &:hover {
       background-color: $border;
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+}
+
+.shippingInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: $primary-muted;
+}
+
+.estimatedDelivery {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: $primary-muted;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .productInfo {
+    gap: 15px;
   }
 }

@@ -1,11 +1,14 @@
+import { Clock, Truck } from "lucide-react";
 import { colors, sizes } from "../../constants";
 import type { Product } from "../../types/product.types";
 import styles from "./product-info.module.scss";
 import { useState } from "react";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const ProductInfo = ({ product }: { product: Product }) => {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
+  const { getItem, setItem } = useLocalStorage("cart");
 
   const currentSize = sizes.find((size) => size.label === selectedSize);
 
@@ -14,12 +17,69 @@ const ProductInfo = ({ product }: { product: Product }) => {
   const isLow = currentSize?.stock <= 5 && !isSoldOut;
 
   const handleIncrement = () => {
-    setQuantity(quantity + 1);
+    if (quantity < currentSize?.stock) {
+      setQuantity((prev) => prev + 1);
+    }
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1);
+      setQuantity((prev) => prev - 1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (!selectedSize || !currentSize) return;
+
+    const currentCart = getItem();
+
+    if (!currentCart) {
+      setItem({
+        products: [
+          {
+            ...product,
+            size: selectedSize,
+            quantity,
+          },
+        ],
+      });
+      return;
+    }
+
+    const currentItem = currentCart?.products?.find(
+      (item: any) => item.id === product.id && item.size === selectedSize,
+    );
+
+    const currentCartQuantity = currentItem?.quantity || 0;
+
+    const available = currentSize?.stock - currentCartQuantity;
+
+    if (quantity > available) {
+      alert("Not enough stock available");
+      return;
+    }
+
+    if (currentItem) {
+      setItem({
+        ...currentCart,
+        products: currentCart.products.map((item: any) =>
+          item.id === product.id && item.size === selectedSize
+            ? { ...item, quantity: item.quantity + quantity }
+            : item,
+        ),
+      });
+    } else {
+      setItem({
+        ...currentCart,
+        products: [
+          ...currentCart.products,
+          {
+            ...product,
+            size: selectedSize,
+            quantity,
+          },
+        ],
+      });
     }
   };
 
@@ -54,7 +114,10 @@ const ProductInfo = ({ product }: { product: Product }) => {
               <button
                 key={`${index}-${size.label}`}
                 data-active={selectedSize === size.label}
-                onClick={() => setSelectedSize(size.label)}
+                onClick={() => {
+                  setSelectedSize(size.label);
+                  setQuantity(1);
+                }}
                 disabled={isDisabled}
               >
                 {size.label}
@@ -68,16 +131,36 @@ const ProductInfo = ({ product }: { product: Product }) => {
             {isLow ? `Only ${currentSize.stock} left` : "In stock"}
           </p>
         )}
-
-        <div className={styles.addToCartContainer}>
-          <div className={styles.counter}>
-            <button onClick={handleDecrement}>-</button>
-            <span>{quantity}</span>
-            <button onClick={handleIncrement}>+</button>
-          </div>
-
-          <button className="primary-button">Add to Cart</button>
+      </div>
+      <div className={styles.addToCartContainer}>
+        <div className={styles.counter}>
+          <button disabled={quantity === 1} onClick={handleDecrement}>
+            -
+          </button>
+          <span>{quantity}</span>
+          <button
+            disabled={isSoldOut || !selectedSize}
+            onClick={handleIncrement}
+          >
+            +
+          </button>
         </div>
+
+        <button
+          className="primary-button"
+          onClick={handleAddToCart}
+          disabled={!selectedSize || isSoldOut || quantity > currentSize.stock}
+        >
+          Add to Cart
+        </button>
+      </div>
+
+      <div className={styles.shippingInfo}>
+        <Truck size={22} /> <span>Free shipping on all orders above 50$</span>
+      </div>
+
+      <div className={styles.estimatedDelivery}>
+        <Clock size={22} /> <span>Estimated delivery: 3-5 business days</span>
       </div>
     </div>
   );
