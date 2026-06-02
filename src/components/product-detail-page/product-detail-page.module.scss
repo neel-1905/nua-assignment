@@ -1,0 +1,40 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
+
+.productDetailHeroWrapper {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.productDetailInfoWrapper {
+  // flex: 1;
+}
+
+.loaderContainer {
+  @include flex-center;
+}
+
+.loader {
+  animation: spin 1s linear infinite;
+  color: $primary;
+}
+
+.errorContainer {
+  @include flex-center;
+  color: $danger;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .productDetailHeroWrapper {
+    grid-template-columns: 1fr;
+  }
+}
