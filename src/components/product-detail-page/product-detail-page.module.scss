@@ -3,8 +3,8 @@
 
 .productDetailHeroWrapper {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 30px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
 }
 
 .loaderContainer {
@@ -33,11 +33,5 @@
 @media (max-width: $breakpoint-mobile) {
   .productDetailHeroWrapper {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: $breakpoint-tablet) {
-  .productDetailHeroWrapper {
-    gap: 20px;
   }
 }
