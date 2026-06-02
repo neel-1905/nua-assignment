@@ -38,6 +38,16 @@ const ImageGallery = ({ product }: { product: Product }) => {
             </div>
           ))}
         </div>
+
+        <div className={styles.dotsContainer}>
+          {images.map((_, index) => (
+            <div
+              key={`dot-${index}`}
+              data-active={index === activeImage}
+              className={styles.dot}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
