@@ -10,6 +10,10 @@ const ProductDetailPage = () => {
   const productId = searchParams.get("id");
   const { product, loading, error } = useProduct(productId || "4");
 
+  console.log(product, loading, error);
+
+  if (!loading && !product) return <>Product not found</>;
+
   return (
     <div className="content-wrapper">
       {loading && !error && (

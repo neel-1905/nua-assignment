@@ -160,6 +160,12 @@
   }
 }
 
+.deliverySection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .shippingInfo {
   display: flex;
   align-items: center;
