@@ -4,6 +4,7 @@
   border-top: 1px solid $border;
   padding: 20px 0;
   background-color: #fff;
+  min-height: 200px;
 
   .footerContent {
     max-width: $container-width;
@@ -12,6 +13,7 @@
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    align-items: start;
     gap: 10px;
 
     .footerColumn {
@@ -26,10 +28,10 @@
         color: $primary;
       }
 
-      h3 {
+      h2 {
         margin: 0;
         padding: 0;
-        font-size: 1.1 rem;
+        font-size: 1.1rem;
         font-weight: 600;
         color: $primary;
       }

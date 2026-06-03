@@ -32,7 +32,7 @@ export const CartSidebar = ({
             <h2>Cart</h2>
             <span>({noOfProducts} items)</span>
           </div>
-          <button onClick={onClose}>
+          <button aria-label="Close" onClick={onClose}>
             <X />
           </button>
         </div>

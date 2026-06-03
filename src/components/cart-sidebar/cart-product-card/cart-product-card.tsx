@@ -13,7 +13,7 @@ const CartProductCard = ({ product }: { product: any }) => {
   return (
     <div className={styles.cartProductCard}>
       <div className={styles.imgWrapper}>
-        <img src={image} alt={title} />
+        <img src={image} alt={title} width={80} height={80} loading="lazy" />
       </div>
 
       <div className={styles.center}>
@@ -34,12 +34,16 @@ const CartProductCard = ({ product }: { product: any }) => {
         </div>
 
         <div className={styles.counter}>
-          <button onClick={() => decrementQuantity(id, size)}>
+          <button
+            onClick={() => decrementQuantity(id, size)}
+            aria-label="Decrement quantity"
+          >
             <Minus size={15} />
           </button>
           <span>{quantity}</span>
           <button
             onClick={() => incrementQuantity(id, size, currentSize?.stock || 0)}
+            aria-label="Increment quantity"
           >
             <Plus size={15} />
           </button>
@@ -47,7 +51,10 @@ const CartProductCard = ({ product }: { product: any }) => {
       </div>
 
       <div className={styles.right}>
-        <button onClick={() => removeItemFromCart(id, size)}>
+        <button
+          onClick={() => removeItemFromCart(id, size)}
+          aria-label="Remove item"
+        >
           <X size={20} />
         </button>
 

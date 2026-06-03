@@ -55,7 +55,12 @@ const ProductDetails = ({ product }: { product: Product }) => {
 
                 <div className={styles.reviewsGrid}>
                   {reviews.map((review) => {
-                    return <ReviewCard review={review} />;
+                    return (
+                      <ReviewCard
+                        key={`${review.name}-${review.date}`}
+                        review={review}
+                      />
+                    );
                   })}
                 </div>
               </div>

@@ -6,27 +6,27 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.footerColumn}>
-          <h3 className={styles.footerTitle}>Product Store</h3>
+          <h2 className={styles.footerTitle}>Product Store</h2>
           <p>Built for the wild. Curated for the connoisseur. Since 2026.</p>
         </div>
         <div className={styles.footerColumn}>
-          <h3>Quick Links</h3>
+          <h2>Quick Links</h2>
           <a href="#">Shipping Info</a>
           <a href="#">Returns & Exchanges</a>
           <a href="#">Support Center</a>
         </div>
         <div className={styles.footerColumn}>
-          <h3>Legal</h3>
+          <h2>Legal</h2>
           <a href="#">Terms of Service</a>
           <a href="#">Privacy Policy</a>
         </div>
         <div className={styles.footerColumn}>
-          <h3>Stay Connected</h3>
+          <h2>Stay Connected</h2>
           <div className={styles.socialLinks}>
-            <a href="#">
+            <a href="#" aria-label="Call us">
               <Phone size={20} />
             </a>
-            <a href="#">
+            <a href="#" aria-label="Email us">
               <Mail size={20} />
             </a>
           </div>

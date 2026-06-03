@@ -23,12 +23,12 @@ const Navbar = () => {
         <div className={styles.navRight}>
           <div className={styles.cartBtnContainer}>
             {noOfProducts > 0 ? <div>{noOfProducts}</div> : null}
-            <button onClick={() => setIsSidebarOpen(true)}>
+            <button aria-label="Cart" onClick={() => setIsSidebarOpen(true)}>
               <ShoppingCartIcon size={22} />
             </button>
           </div>
 
-          <button>
+          <button aria-label="Profile">
             <User2 size={22} />
           </button>
         </div>

@@ -7,9 +7,9 @@ const ImageGallery = ({ product }: { product: Product }) => {
 
   const images = [
     product.image,
-    "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=600&h=600&q=80",
-    "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?auto=format&fit=crop&w=600&h=600&q=80",
-    "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=600&h=600&q=80",
+    "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=600&h=600&q=50",
+    "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?auto=format&fit=crop&w=600&h=600&q=50",
+    "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=600&h=600&q=50",
   ];
 
   return (
@@ -20,6 +20,10 @@ const ImageGallery = ({ product }: { product: Product }) => {
             src={images[activeImage]}
             alt={product.title}
             className={styles.image}
+            loading="eager"
+            width={800}
+            height={800}
+            fetchPriority="high"
           />
         </div>
 

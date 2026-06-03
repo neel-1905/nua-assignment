@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        index: true, // "index: true" means this renders at the base path ("/")
+        index: true,
         element: <Home />,
       },
       {
@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
         element: <ProductDetailPage />,
       },
       {
-        path: "*", // "*" matches absolutely anything else
+        path: "*",
         element: <NotFound />,
       },
     ],

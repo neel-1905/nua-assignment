@@ -20,13 +20,15 @@ const ProductInfo = ({ product }: { product: Product }) => {
 
   const currentSize = sizes.find((size) => size.label === selectedSize);
 
-  const isSoldOut = currentSize!.stock === 0;
+  const currentStock = currentSize?.stock;
 
-  const isLow = currentSize!.stock <= 5 && !isSoldOut;
+  const isSoldOut = currentStock === 0;
+
+  const isLow = currentStock !== undefined && currentStock <= 5 && !isSoldOut;
 
   const availableStock =
-    selectedSize && currentSize
-      ? getAvailableStock(product.id, selectedSize, currentSize!.stock)
+    selectedSize && currentStock !== undefined
+      ? getAvailableStock(product.id, selectedSize, currentStock)
       : 0;
 
   const handleIncrement = () => {
@@ -76,6 +78,7 @@ const ProductInfo = ({ product }: { product: Product }) => {
               data-active={color === searchParams.get("color")}
             >
               <button
+                aria-label={`Select color ${color}`}
                 style={{ backgroundColor: color }}
                 onClick={() => {
                   setSelectedColor(color);

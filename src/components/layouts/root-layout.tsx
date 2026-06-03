@@ -8,9 +8,9 @@ const RootLayout = () => {
     <CartProvider>
       <div className="app-wrapper">
         <Navbar />
-        <div className="content-wrapper">
+        <main className="content-wrapper">
           <Outlet />
-        </div>
+        </main>
 
         <Footer />
       </div>
