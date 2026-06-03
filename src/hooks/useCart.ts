@@ -6,7 +6,7 @@ export const useCart = () => {
 
   const getProductStock = (id: string, size: string) => {
     const stock =
-      cart?.products?.find((item) => item.id === id && item.size === size)
+      cart?.products?.find((item: any) => item.id === id && item.size === size)
         ?.quantity || 0;
 
     return stock;
@@ -36,7 +36,7 @@ export const useCart = () => {
     color: string;
   }) => {
     const existingItem = cart.products.find(
-      (item) => item.id === product.id && item.size === size,
+      (item: any) => item.id === product.id && item.size === size,
     );
 
     const availableStock = stock - getProductStock(product.id, size);
@@ -48,7 +48,7 @@ export const useCart = () => {
     if (existingItem) {
       setCart({
         ...cart,
-        products: cart.products.map((item) =>
+        products: cart.products.map((item: any) =>
           item.id === product.id && item.size === size
             ? {
                 ...item,
@@ -81,7 +81,7 @@ export const useCart = () => {
     setCart({
       ...cart,
 
-      products: cart.products.map((item) => {
+      products: cart.products.map((item: any) => {
         if (item.id === productId && item.size === size) {
           if (item.quantity >= stock) {
             return item;
@@ -103,7 +103,7 @@ export const useCart = () => {
       ...cart,
 
       products: cart.products
-        .map((item) =>
+        .map((item: any) =>
           item.id === productId && item.size === size
             ? {
                 ...item,
@@ -111,7 +111,7 @@ export const useCart = () => {
               }
             : item,
         )
-        .filter((item) => item.quantity > 0),
+        .filter((item: any) => item.quantity > 0),
     });
   };
 
@@ -120,7 +120,7 @@ export const useCart = () => {
       ...cart,
 
       products: cart.products.filter(
-        (item) => !(item.id === productId && item.size === size),
+        (item: any) => !(item.id === productId && item.size === size),
       ),
     });
   };

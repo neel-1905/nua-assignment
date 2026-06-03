@@ -12,7 +12,7 @@ export function useProduct(id: string) {
       try {
         const data = await getProduct(id);
         setProduct(data);
-      } catch (error) {
+      } catch (error: any) {
         setError(error);
       } finally {
         setLoading(false);

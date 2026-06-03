@@ -10,7 +10,7 @@ import ProductDetails from "../product-details/product-details";
 
 const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>();
-  const { product, loading, error } = useProduct(id);
+  const { product, loading, error } = useProduct(id as string);
 
   if (!loading && !product) return <NotFound />;
 

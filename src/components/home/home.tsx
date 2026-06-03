@@ -1,4 +1,3 @@
-import { LoaderCircle } from "lucide-react";
 import { useProducts } from "../../hooks/useProducts";
 import ProductCard from "../product-card/product-card";
 import styles from "./home.module.scss";

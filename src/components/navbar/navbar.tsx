@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const noOfProducts = cart.products.reduce(
-    (acc, item) => acc + item.quantity,
+    (acc: any, item: any) => acc + item.quantity,
     0,
   );
 

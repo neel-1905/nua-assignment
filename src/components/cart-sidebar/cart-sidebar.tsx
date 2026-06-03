@@ -13,11 +13,11 @@ export const CartSidebar = ({
   const { cart } = useCartContext();
 
   const noOfProducts = cart.products
-    .reduce((acc, item) => acc + item.quantity, 0)
+    .reduce((acc: any, item: any) => acc + item.quantity, 0)
     .toFixed(0);
 
   const subTotal = cart.products
-    .reduce((acc, item) => acc + item.price * item.quantity, 0)
+    .reduce((acc: any, item: any) => acc + item.price * item.quantity, 0)
     .toFixed(2);
 
   const shippingPrice = subTotal > 50 || noOfProducts < 1 ? 0 : 50;
@@ -41,7 +41,7 @@ export const CartSidebar = ({
           <p>Your cart is empty!</p>
         ) : (
           <div className={styles.productsContainer}>
-            {cart.products?.map((prod) => {
+            {cart.products?.map((prod: any) => {
               return (
                 <CartProductCard
                   key={`cart-prod-${prod.id}-${prod.size}`}

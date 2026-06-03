@@ -20,13 +20,13 @@ const ProductInfo = ({ product }: { product: Product }) => {
 
   const currentSize = sizes.find((size) => size.label === selectedSize);
 
-  const isSoldOut = currentSize?.stock === 0;
+  const isSoldOut = currentSize!.stock === 0;
 
-  const isLow = currentSize?.stock <= 5 && !isSoldOut;
+  const isLow = currentSize!.stock <= 5 && !isSoldOut;
 
   const availableStock =
     selectedSize && currentSize
-      ? getAvailableStock(product.id, selectedSize, currentSize.stock)
+      ? getAvailableStock(product.id, selectedSize, currentSize!.stock)
       : 0;
 
   const handleIncrement = () => {
@@ -42,7 +42,7 @@ const ProductInfo = ({ product }: { product: Product }) => {
   };
 
   const handleAddToCart = () => {
-    if (!selectedSize || !currentSize) return;
+    if (!selectedSize || !currentSize || !selectedColor) return;
 
     addToCart({
       product,
@@ -138,7 +138,7 @@ const ProductInfo = ({ product }: { product: Product }) => {
         <button
           className="primary-button"
           onClick={handleAddToCart}
-          disabled={!selectedSize || isSoldOut || quantity > currentSize.stock}
+          disabled={!selectedSize || isSoldOut || quantity > currentSize!.stock}
         >
           Add to Cart
         </button>
