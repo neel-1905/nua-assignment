@@ -1,19 +1,17 @@
+import { RouterProvider } from "react-router-dom";
 import Footer from "./components/footer/footer";
 import Navbar from "./components/navbar/navbar";
-import ProductDetailPage from "./components/product-detail-page/product-detail-page";
-import { BrowserRouter as Router } from "react-router-dom";
+import { router } from "./router";
 
 export default function App() {
   return (
-    <Router>
-      <div className="app-wrapper">
-        <Navbar />
-        <div className="content-wrapper">
-          <ProductDetailPage />
-        </div>
-
-        <Footer />
+    <div className="app-wrapper">
+      <Navbar />
+      <div className="content-wrapper">
+        <RouterProvider router={router} />
       </div>
-    </Router>
+
+      <Footer />
+    </div>
   );
 }

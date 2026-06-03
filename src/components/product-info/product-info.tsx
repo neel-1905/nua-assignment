@@ -4,9 +4,13 @@ import type { Product } from "../../types/product.types";
 import styles from "./product-info.module.scss";
 import { useState } from "react";
 import { useCart } from "../../hooks/useCart";
+import { useSearchParams } from "react-router-dom";
 
 const ProductInfo = ({ product }: { product: Product }) => {
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [selectedSize, setSelectedSize] = useState<string | null>(
+    searchParams.get("size") || null,
+  );
   const [quantity, setQuantity] = useState(1);
   const { addToCart, getAvailableStock } = useCart();
 
@@ -78,6 +82,9 @@ const ProductInfo = ({ product }: { product: Product }) => {
                 onClick={() => {
                   setSelectedSize(size.label);
                   setQuantity(1);
+                  setSearchParams({
+                    size: size.label,
+                  });
                 }}
                 disabled={isDisabled}
               >

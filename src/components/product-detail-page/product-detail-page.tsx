@@ -3,13 +3,13 @@ import { useProduct } from "../../hooks/useProduct";
 import { LoaderCircle } from "lucide-react";
 import styles from "./product-detail-page.module.scss";
 import ProductInfo from "../product-info/product-info";
-import { useSearchParams } from "react-router-dom";
+
 import NotFound from "../not-found/not-found";
+import { useParams } from "react-router-dom";
 
 const ProductDetailPage = () => {
-  const [searchParams] = useSearchParams();
-  const productId = searchParams.get("id");
-  const { product, loading, error } = useProduct(productId || "4");
+  const { id } = useParams<{ id: string }>();
+  const { product, loading, error } = useProduct(id);
 
   if (!loading && !product) return <NotFound />;
 
