@@ -1,10 +1,8 @@
+import { useCartContext } from "../context/cart-context";
 import type { Product } from "../types/product.types";
-import { useLocalStorage } from "./useLocalStorage";
 
 export const useCart = () => {
-  const { getItem, setItem } = useLocalStorage("cart");
-
-  const cart = getItem() || { products: [] };
+  const { cart, setCart } = useCartContext();
 
   const getProductStock = (id: string, size: string) => {
     const stock =
@@ -46,7 +44,7 @@ export const useCart = () => {
     }
 
     if (existingItem) {
-      setItem({
+      setCart({
         ...cart,
         products: cart.products.map((item) =>
           item.id === product.id && item.size === size
@@ -58,7 +56,7 @@ export const useCart = () => {
         ),
       });
     } else {
-      setItem({
+      setCart({
         ...cart,
         products: [
           ...cart.products,

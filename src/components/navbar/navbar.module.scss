@@ -1,4 +1,5 @@
 @use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
 .header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -24,6 +25,25 @@
     display: flex;
     align-items: center;
     gap: 2rem;
+
+    .cartBtnContainer {
+      position: relative;
+
+      div {
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        border-radius: 100%;
+        background-color: $secondary;
+        color: $bg;
+        padding: 2px;
+        height: 18px;
+        width: 18px;
+        @include flex-center;
+      }
+    }
 
     button {
       background: none;

@@ -11,9 +11,7 @@ const ProductInfo = ({ product }: { product: Product }) => {
   const [selectedSize, setSelectedSize] = useState<string | null>(
     searchParams.get("size") || null,
   );
-  // const [selectedColor, setSelectedColor] = useState(
-  //   searchParams.get("color") || null,
-  // );
+
   const [quantity, setQuantity] = useState(1);
   const { addToCart, getAvailableStock } = useCart();
 
@@ -75,7 +73,11 @@ const ProductInfo = ({ product }: { product: Product }) => {
             >
               <button
                 style={{ backgroundColor: color }}
-                onClick={() => setSearchParams({ color })}
+                onClick={() => {
+                  const params = new URLSearchParams(searchParams);
+                  params.set("color", color);
+                  setSearchParams(params);
+                }}
               ></button>
             </div>
           ))}
@@ -95,9 +97,10 @@ const ProductInfo = ({ product }: { product: Product }) => {
                 onClick={() => {
                   setSelectedSize(size.label);
                   setQuantity(1);
-                  setSearchParams({
-                    size: size.label,
-                  });
+
+                  const params = new URLSearchParams(searchParams);
+                  params.set("size", size.label);
+                  setSearchParams(params);
                 }}
                 disabled={isDisabled}
               >
