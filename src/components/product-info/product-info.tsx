@@ -11,6 +11,9 @@ const ProductInfo = ({ product }: { product: Product }) => {
   const [selectedSize, setSelectedSize] = useState<string | null>(
     searchParams.get("size") || null,
   );
+  // const [selectedColor, setSelectedColor] = useState(
+  //   searchParams.get("color") || null,
+  // );
   const [quantity, setQuantity] = useState(1);
   const { addToCart, getAvailableStock } = useCart();
 
@@ -56,7 +59,9 @@ const ProductInfo = ({ product }: { product: Product }) => {
 
       <div className={styles.priceContainer}>
         <span className={styles.currentPrice}>${product.price}</span>
-        <span className={styles.originalPrice}>${product.price + 50}</span>
+        <span className={styles.originalPrice}>
+          ${(product.price + 50).toFixed(2)}
+        </span>
         <div className={styles.sale}>SALE</div>
       </div>
 
@@ -64,7 +69,15 @@ const ProductInfo = ({ product }: { product: Product }) => {
         <h2 className={styles.sectionTitle}>Colors</h2>
         <div className={styles.colorsContainer}>
           {colors.map((color, index) => (
-            <div key={`${index}-${color}`} style={{ backgroundColor: color }} />
+            <div
+              key={`${index}-${color}`}
+              data-active={color === searchParams.get("color")}
+            >
+              <button
+                style={{ backgroundColor: color }}
+                onClick={() => setSearchParams({ color })}
+              ></button>
+            </div>
           ))}
         </div>
       </div>
