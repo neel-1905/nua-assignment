@@ -8,8 +8,9 @@ export default function App() {
     <Router>
       <div className="app-wrapper">
         <Navbar />
-
-        <ProductDetailPage />
+        <div className="content-wrapper">
+          <ProductDetailPage />
+        </div>
 
         <Footer />
       </div>

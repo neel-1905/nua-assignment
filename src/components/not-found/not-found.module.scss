@@ -1,0 +1,19 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.notFound {
+  flex: 1;
+  @include flex-center;
+  flex-direction: column;
+  gap: 20px;
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 2rem;
+    color: $primary-muted;
+  }
+}
