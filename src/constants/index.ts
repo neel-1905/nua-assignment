@@ -1,4 +1,4 @@
-export const API_BASE_URL = "https://fakestoreapi.com";
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const colors = ["#000000", "#FFFFFF", "#FF0000"];
 

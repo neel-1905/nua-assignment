@@ -22,7 +22,7 @@ export const CartSidebar = ({
 
   const shippingPrice = subTotal > 50 || noOfProducts < 1 ? 0 : 50;
 
-  const totalPrice = subTotal + shippingPrice;
+  const totalPrice = Number(subTotal + shippingPrice).toFixed(2);
   return (
     <>
       {isOpen && <div className={styles.overlay} />}
