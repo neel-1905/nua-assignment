@@ -1,12 +1,12 @@
 import ImageGallery from "../image-gallery/image-gallery";
 import { useProduct } from "../../hooks/useProduct";
-import { LoaderCircle } from "lucide-react";
 import styles from "./product-detail-page.module.scss";
 import ProductInfo from "../product-info/product-info";
 
 import NotFound from "../not-found/not-found";
 import { useParams } from "react-router-dom";
 import Loader from "../loader/loader";
+import ProductDetails from "../product-details/product-details";
 
 const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -30,6 +30,7 @@ const ProductDetailPage = () => {
             <ImageGallery product={product} />
             <ProductInfo product={product} />
           </section>
+          <ProductDetails product={product} />
         </>
       )}
     </>

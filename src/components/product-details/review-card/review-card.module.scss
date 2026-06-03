@@ -1,0 +1,52 @@
+@use "../../../styles/variables" as *;
+
+.reviewCard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px 16px;
+  border: 1px solid $border;
+  //   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  border-radius: $radius;
+  background-color: #fff;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .rating {
+      color: $secondary;
+      font-weight: 600;
+    }
+
+    .buyer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+
+      .verified {
+        background-color: $secondary-muted;
+        color: $bg;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        padding: 5px 10px;
+        border-radius: $radius;
+      }
+    }
+  }
+
+  .body {
+    line-height: 1.5;
+    font-size: 0.9rem;
+    color: $primary-muted;
+  }
+
+  .date {
+    font-size: 0.9rem;
+    color: $primary-muted;
+  }
+}

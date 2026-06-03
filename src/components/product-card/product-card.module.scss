@@ -4,11 +4,12 @@
 .productCard {
   border: 1px solid $border;
   border-radius: $radius;
-  padding: 10px;
+  padding: 10px 15px;
   display: flex;
   flex-direction: column;
   height: 100%;
   gap: 10px;
+  background-color: #fff;
 
   .imgWrapper {
     width: 100%;

@@ -39,6 +39,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 30px;
   // border-left: 1px solid $primary;
   // border-right: 1px solid $primary;
 }
@@ -61,4 +62,9 @@ body {
   &:disabled {
     opacity: 0.5;
   }
+}
+
+.divider {
+  height: 1px;
+  background-color: $border;
 }

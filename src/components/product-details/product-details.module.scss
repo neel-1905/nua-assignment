@@ -1,0 +1,54 @@
+@use "../../styles//variables" as *;
+
+.productDetailsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.productSpecifications {
+  display: flex;
+  flex-direction: column;
+}
+
+.productSpec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $border;
+  }
+
+  span:first-child {
+    color: $primary;
+    font-weight: 600;
+  }
+  span:last-child {
+    color: $primary;
+    font-weight: 500;
+  }
+}
+
+.reviewsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  > span {
+    color: $secondary;
+  }
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .reviewsGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

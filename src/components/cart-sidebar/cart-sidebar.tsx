@@ -20,7 +20,7 @@ export const CartSidebar = ({
     .reduce((acc, item) => acc + item.price * item.quantity, 0)
     .toFixed(2);
 
-  const shippingPrice = subTotal > 50 ? 0 : 50;
+  const shippingPrice = subTotal > 50 || noOfProducts < 1 ? 0 : 50;
 
   const totalPrice = subTotal + shippingPrice;
   return (
@@ -43,13 +43,16 @@ export const CartSidebar = ({
           <div className={styles.productsContainer}>
             {cart.products?.map((prod) => {
               return (
-                <CartProductCard key={`cart-prod-${prod.id}`} product={prod} />
+                <CartProductCard
+                  key={`cart-prod-${prod.id}-${prod.size}`}
+                  product={prod}
+                />
               );
             })}
           </div>
         )}
 
-        <div className={styles.divider} />
+        <div className="divider" />
 
         <div className={styles.pricingContainer}>
           <div className={styles.prices}>
