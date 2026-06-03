@@ -27,11 +27,13 @@ export const useCart = () => {
     quantity,
     size,
     stock,
+    color,
   }: {
     product: Product;
     size: any;
     quantity: number;
     stock: number;
+    color: string;
   }) => {
     const existingItem = cart.products.find(
       (item) => item.id === product.id && item.size === size,
@@ -64,10 +66,63 @@ export const useCart = () => {
             ...product,
             quantity,
             size,
+            color,
           },
         ],
       });
     }
+  };
+
+  const incrementQuantity = (
+    productId: number,
+    size: string,
+    stock: number,
+  ) => {
+    setCart({
+      ...cart,
+
+      products: cart.products.map((item) => {
+        if (item.id === productId && item.size === size) {
+          if (item.quantity >= stock) {
+            return item;
+          }
+
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        }
+
+        return item;
+      }),
+    });
+  };
+
+  const decrementQuantity = (productId: number, size: string) => {
+    setCart({
+      ...cart,
+
+      products: cart.products
+        .map((item) =>
+          item.id === productId && item.size === size
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+              }
+            : item,
+        )
+        .filter((item) => item.quantity > 0),
+    });
+  };
+
+  const removeItemFromCart = (productId: number, size: string) => {
+    setCart({
+      ...cart,
+
+      products: cart.products.filter(
+        (item) => !(item.id === productId && item.size === size),
+      ),
+    });
   };
 
   return {
@@ -75,5 +130,8 @@ export const useCart = () => {
     addToCart,
     getProductStock,
     getAvailableStock,
+    removeItemFromCart,
+    decrementQuantity,
+    incrementQuantity,
   };
 };

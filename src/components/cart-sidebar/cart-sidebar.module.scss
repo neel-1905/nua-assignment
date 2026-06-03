@@ -1,0 +1,111 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -450px;
+  width: 400px;
+  max-width: 100%;
+  height: 100vh;
+  z-index: 100;
+  transition: right 0.5s ease-in-out;
+  background-color: $bg;
+  padding: 20px;
+  border-left: 1px solid $border;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &[data-open="true"] {
+    right: 0;
+  }
+
+  .sidebarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      h2 {
+        text-transform: uppercase;
+        font-size: 1rem;
+      }
+      span {
+        color: $primary-muted;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .productsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    // flex: 1;
+    height: 60vh;
+    overflow-y: auto;
+  }
+
+  .divider {
+    height: 1px;
+    background-color: $border;
+  }
+
+  .pricingContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .prices {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+          font-size: 0.9rem;
+          color: $primary-muted;
+        }
+      }
+    }
+  }
+
+  .total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
+  }
+
+  .secure {
+    @include flex-center;
+    gap: 10px;
+  }
+}

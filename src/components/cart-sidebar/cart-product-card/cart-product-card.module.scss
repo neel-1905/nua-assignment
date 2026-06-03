@@ -1,0 +1,95 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.cartProductCard {
+  width: 100%;
+  display: flex;
+  //   justify-content: space-between;
+  gap: 8px;
+
+  .imgWrapper {
+    height: 90px;
+    width: 90px;
+    border: 1px solid $border;
+    border-radius: $radius;
+    padding: 5px;
+    flex-shrink: 0;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .center {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      @include line-clamp(1);
+    }
+
+    .sizeColor {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      div {
+        display: flex;
+        gap: 3px;
+        align-items: center;
+      }
+
+      .colorDiv {
+        height: 20px;
+        width: 20px;
+        border: 1px solid $border;
+        border-radius: 100%;
+      }
+    }
+
+    span {
+      font-size: 0.85rem;
+    }
+
+    .counter {
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid $border;
+      border-radius: $radius;
+      padding: 5px;
+
+      button {
+        background: none;
+        padding: 2px;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    span {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  }
+}
