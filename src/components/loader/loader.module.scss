@@ -1,0 +1,12 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
+
+.loaderContainer {
+  flex: 1;
+  @include flex-center;
+}
+
+.loader {
+  @include spin-animation();
+  color: $primary;
+}

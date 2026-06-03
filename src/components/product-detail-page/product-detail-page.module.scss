@@ -7,27 +7,9 @@
   gap: 40px;
 }
 
-.loaderContainer {
-  @include flex-center;
-}
-
-.loader {
-  animation: spin 1s linear infinite;
-  color: $primary;
-}
-
 .errorContainer {
   @include flex-center;
   color: $danger;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 @media (max-width: $breakpoint-mobile) {

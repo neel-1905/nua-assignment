@@ -6,6 +6,7 @@ import ProductInfo from "../product-info/product-info";
 
 import NotFound from "../not-found/not-found";
 import { useParams } from "react-router-dom";
+import Loader from "../loader/loader";
 
 const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,11 +16,7 @@ const ProductDetailPage = () => {
 
   return (
     <>
-      {loading && !error && (
-        <div className={styles.loaderContainer}>
-          <LoaderCircle className={styles.loader} size={50} />
-        </div>
-      )}
+      {loading && !error && <Loader />}
 
       {error && (
         <div className={styles.errorContainer}>
