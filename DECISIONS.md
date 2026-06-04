@@ -31,3 +31,5 @@
 - The lighthouse performance can be improved by optimizing images, reducing bundle size, and improving loading times, but because of external image sources, it was difficult to optimize them. I would like to improve on that in the future to get a better score.
 
 - SEO can be improved by adding OpenGraph images and meta tags for better sharing and search engine visibility.
+
+- Currently I am using alerts to notify users of the actions, but a better notification system can be implemented using a toast library or custom toast components.
