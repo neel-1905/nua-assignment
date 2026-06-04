@@ -8,6 +8,7 @@ A responsive product detail page built with React, TypeScript, SCSS Modules, and
 
 ## Features
 
+- Basic home page with list of all the products
 - Responsive product detail page
 - Product image gallery with thumbnails
 - Cart sidebar with:
