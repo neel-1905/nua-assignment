@@ -52,32 +52,38 @@ export const CartSidebar = ({
           </div>
         )}
 
-        <div className="divider" />
+        {noOfProducts > 0 && (
+          <>
+            <div className="divider" />
 
-        <div className={styles.pricingContainer}>
-          <div className={styles.prices}>
-            <div>
-              <span>Subtotal</span>
-              <span>${subTotal}</span>
+            <div className={styles.pricingContainer}>
+              <div className={styles.prices}>
+                <div>
+                  <span>Subtotal</span>
+                  <span>${subTotal}</span>
+                </div>
+                <div>
+                  <span>Shipping</span>
+                  <span>
+                    {shippingPrice === 0 ? "Free" : `$${shippingPrice}`}
+                  </span>
+                </div>
+              </div>
             </div>
-            <div>
-              <span>Shipping</span>
-              <span>{shippingPrice === 0 ? "Free" : `$${shippingPrice}`}</span>
+
+            <div className={styles.total}>
+              <span>Total</span>
+              <span>${totalPrice}</span>
             </div>
-          </div>
-        </div>
 
-        <div className={styles.total}>
-          <span>Total</span>
-          <span>${totalPrice}</span>
-        </div>
+            <button className="primary-button">CHECKOUT</button>
 
-        <button className="primary-button">CHECKOUT</button>
-
-        <div className={styles.secure}>
-          <Lock size={20} />
-          Secure Encryption
-        </div>
+            <div className={styles.secure}>
+              <Lock size={20} />
+              Secure Encryption
+            </div>
+          </>
+        )}
       </aside>
     </>
   );
