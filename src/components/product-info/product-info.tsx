@@ -30,6 +30,8 @@ const ProductInfo = ({ product }: { product: Product }) => {
     selectedSize && currentStock !== undefined
       ? getAvailableStock(product.id, selectedSize, currentStock)
       : 0;
+  const isSelectedVariantSoldOut =
+    selectedSize !== null && selectedColor !== null && availableStock <= 0;
 
   const handleIncrement = () => {
     if (quantity < availableStock) {
@@ -44,7 +46,10 @@ const ProductInfo = ({ product }: { product: Product }) => {
   };
 
   const handleAddToCart = () => {
-    if (!selectedSize || !currentSize || !selectedColor) return;
+    if (!selectedSize || !currentSize || !selectedColor) {
+      alert("Please select a size and color");
+      return;
+    }
 
     addToCart({
       product,
@@ -141,7 +146,13 @@ const ProductInfo = ({ product }: { product: Product }) => {
         <button
           className="primary-button"
           onClick={handleAddToCart}
-          disabled={!selectedSize || isSoldOut || quantity > currentSize!.stock}
+          // disabled={}
+          disabled={
+            !selectedSize ||
+            // !selectedColor ||
+            isSelectedVariantSoldOut ||
+            quantity > availableStock
+          }
         >
           Add to Cart
         </button>
