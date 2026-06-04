@@ -57,6 +57,7 @@ export const useCart = () => {
             : item,
         ),
       });
+      alert("Item added to cart");
     } else {
       setCart({
         ...cart,
@@ -70,6 +71,7 @@ export const useCart = () => {
           },
         ],
       });
+      alert("Item added to cart");
     }
   };
 
